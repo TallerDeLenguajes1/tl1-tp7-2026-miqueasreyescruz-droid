@@ -6,7 +6,7 @@ float num = 0;
 string selector = "";
 bool verificador = true;
 
-Console.WriteLine("--- CalculadoraV1 ---");
+Console.WriteLine("--- Calculadora ---");
 do
 {
     Console.WriteLine("------ MENU ------");
