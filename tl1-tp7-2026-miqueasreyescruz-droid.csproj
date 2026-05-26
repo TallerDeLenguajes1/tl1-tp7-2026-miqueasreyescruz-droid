@@ -5,7 +5,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <RootNamespace>tl1_tp7_2026_miqueasreyescruz_droid</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>disble</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
 
 </Project>
