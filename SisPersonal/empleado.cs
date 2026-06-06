@@ -7,7 +7,7 @@ class Empleado
     private char estadoCivil;
     private DateTime fechaIngreso;
     private double sueldoBasico;
-    private cargoEmpleado cargo;
+    private CargoEmpleado cargo;
 
     public string Nombre { get => nombre; set => nombre = value; }
     public string Apellido { get => apellido; set => apellido = value; }
@@ -15,27 +15,39 @@ class Empleado
     public char EstadoCivil { get => estadoCivil; set => estadoCivil = value; }
     public DateTime FechaIngreso { get => fechaIngreso; set => fechaIngreso = value; }
     public double SueldoBasico { get => sueldoBasico; set => sueldoBasico = value; }
-    public cargoEmpleado Cargo { get => cargo; set => cargo = value; }
+    public CargoEmpleado Cargo { get => cargo; set => cargo = value; }
 
-    public TimeSpan Antiguedad ()
+    public int Antiguedad ()
     {
-        return (DateTime.Now - FechaIngreso);
+        int resultado = DateTime.Today.Year - FechaIngreso.Year;
+        if (DateTime.Today < fechaIngreso.AddYears(resultado))
+        {
+            resultado--;
+        }
+        return resultado;
     }
 
-    public TimeSpan Edad()
+    public int Edad ()
     {
-        return (DateTime.Now - FechaNacimiento);
+        int resultado = DateTime.Today.Year - fechaNacimiento.Year;
+        if (DateTime.Today < fechaNacimiento.AddYears(resultado))
+        {
+            resultado--;
+        }
+        return resultado;
     }
 
-    public TimeSpan ParaJubilarce()
+    public int ParaJubilarce ()
     {
-        DateTime FechaJubilacion = FechaNacimiento.AddYears(65);
-        return (FechaJubilacion - DateTime.Now);
+        return (65 - Edad());
     }
 }
 
-public enum cargoEmpleado : int 
+public enum CargoEmpleado : int 
 {
     Auxiliar = 1,
-    Administrativo = 2    
+    Administrativo = 2,   
+    Ingeniero = 3, 
+    Especialista = 4, 
+    Investigador = 5 
 }
