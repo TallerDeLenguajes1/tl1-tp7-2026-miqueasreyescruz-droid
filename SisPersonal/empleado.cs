@@ -1,3 +1,5 @@
+using System.IO.Pipelines;
+
 namespace empleado;
 class Empleado
 {
@@ -37,9 +39,14 @@ class Empleado
         return resultado;
     }
 
-    public int ParaJubilarce ()
+    public int ParaJubilarse ()
     {
-        return (65 - Edad());
+        int resultado = 65 - Edad();
+        if (resultado < 0)
+        {
+            resultado = 0;
+        }  
+        return resultado;
     }
 
     public double SalarioTotal()

@@ -2,6 +2,7 @@
 
 double MontoTotal = 0;
 Empleado[] MisEmpleados = new Empleado[3];
+Empleado proximoJubilarse;
 
 Console.WriteLine("___CARGANDO EMPLEADOS___");
 
@@ -36,10 +37,25 @@ Console.WriteLine("________________________");
 MontoTotal = MisEmpleados[0].SalarioTotal() + MisEmpleados[1].SalarioTotal() + MisEmpleados[2].SalarioTotal();
 Console.WriteLine($"-> Monto Total de lo que se paga en concepto de Salarios: {MontoTotal:C2}");
 
+proximoJubilarse = MisEmpleados[0];
+for(int i = 1; i < 3; i++)
+{
+    if (proximoJubilarse.ParaJubilarse() > MisEmpleados[i].ParaJubilarse())
+    {
+        proximoJubilarse = MisEmpleados[i];
+    }
+}
 
-// // Pruebas
-// Console.WriteLine($"Edad del empleado: {MiEmpleado.Edad()}");
-// Console.WriteLine($"Antiguedad: {MiEmpleado.Antiguedad()}");
-// Console.WriteLine($"Tiempo hasta su jubilacion: {MiEmpleado.ParaJubilarce()}");
-// Console.WriteLine($"Salario Calculado: {MiEmpleado.SalarioTotal():C2}");
-
+Console.WriteLine("-> Informacion del empleado mas proximo a jubilarse:");
+Console.WriteLine($"Nombre: {proximoJubilarse.Nombre}");
+Console.WriteLine($"Apellido: {proximoJubilarse.Apellido}");
+Console.WriteLine($"Fecha de Nacimiento: {proximoJubilarse.FechaNacimiento}");
+Console.WriteLine($"Estado Civil: {proximoJubilarse.EstadoCivil}");
+Console.WriteLine($"Fecha de Ingreso: {proximoJubilarse.FechaIngreso}");
+Console.WriteLine($"Sueldo Basico: {proximoJubilarse.SueldoBasico:C2}");
+Console.WriteLine($"Cargo: {proximoJubilarse.Cargo}");
+Console.WriteLine("- Informacion auxiliar: ");
+Console.WriteLine($"Antiguedad: {proximoJubilarse.Antiguedad()}");
+Console.WriteLine($"Edad: {proximoJubilarse.Edad()}");
+Console.WriteLine($"Años para jubilarse: {proximoJubilarse.ParaJubilarse()}");
+Console.WriteLine($"Salario total: {proximoJubilarse.SalarioTotal():C2}");
