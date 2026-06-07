@@ -41,6 +41,37 @@ class Empleado
     {
         return (65 - Edad());
     }
+
+    public double SalarioTotal()
+    {
+        return (sueldoBasico + Adicional());
+    }
+
+    private double Adicional()
+    {
+        double resultado = 0;
+
+        if (Antiguedad() > 20)
+        {
+            resultado = sueldoBasico * 0.25;
+        }
+        else
+        {
+            resultado = sueldoBasico * (0.01 * Antiguedad());
+        }
+
+        if(Cargo == CargoEmpleado.Ingeniero || Cargo == CargoEmpleado.Especialista)
+        {
+            resultado *= 1.50;
+        }
+
+        if(EstadoCivil == 'C')
+        {
+            resultado += 150000;
+        }
+
+        return resultado;
+    }
 }
 
 public enum CargoEmpleado : int 
